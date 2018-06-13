@@ -44,7 +44,19 @@ for row in tuple(hogeSheet['b2':'c6']):
     print('END OF ROW')
 
 # シートを列選択 TODO TypeError: 'generator' object is not subscriptable
-hogeSheet.columns[1]
+#hogeSheet.columns[1]
 #for celll in hogeSheet.columns[2]:
 #    print(str(celll.value))
+
+# 数式をセルに記入
+formulasSheet = wb.get_sheet_by_name('formulas')
+formulasSheet['b8'] = '=sum(b3:b7)'
+wb.save('sample_.xlsx')
+
+# セルの高さ・幅を調整
+hogeSheet['b8']
+hogeSheet.row_dimensions[8].height = 70
+hogeSheet.column_dimensions['B'].width = 20
+wb.save('sample_.xlsx')
+
 
